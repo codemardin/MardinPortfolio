@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S. M. Mardin Rahman | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: rgba(10, 10, 20, 0.9);
+            color: #00e5ff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 229, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: #00e5ff;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #00e5ff;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+            padding: 3rem 0;
+            min-height: calc(100vh - 140px);
+        }
+
+        .active {
+            display: block;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1.5rem;
+            color: #00e5ff;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #ff00ff;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(255, 0, 255, 0.2);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Home Page */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            border: none;
+            color: #00e5ff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff00ff, #00e5ff);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+        }
+
+        /* About Page */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .profile-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-picture-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 5px solid #00e5ff;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+            position: relative;
+        }
+
+        #profile-picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #00e5ff;
+            font-size: 1.2rem;
+        }
+
+        .bio-section {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        /* Education Page */
+        .education-item {
+            background: rgba(26, 26, 46, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 229, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 229, 255, 0.2);
+        }
+
+        .education-item h3 {
+            color: #ff00ff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Achievements Page */
+        .achievements-list {
+            background: rgba(26, 26, 46, 0.7);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .achievements-list ul {
+            list-style-type: none;
+        }
+
+        .achievements-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            position: relative;
+            padding-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .achievements-list li:hover {
+            color: #00e5ff;
+        }
+
+        .achievements-list li:before {
+            content: "▸";
+            color: #ff00ff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .achievements-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Page */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(26, 26, 46, 0.7);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .contact-info h3 {
+            color: #ff00ff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .email-link {
+            color: #00e5ff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .email-link:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(26, 26, 46, 0.7);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #00e5ff;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(10, 10, 20, 0.7);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #e0e0e0;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff00ff, #00e5ff);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 20, 0.9);
+            color: #00e5ff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -2px 20px rgba(0, 229, 255, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .linkedin-icon {
+            font-size: 2.2rem;
+            color: #00e5ff;
+            transition: all 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .linkedin-icon:hover {
+            color: #0077b5;
+            transform: scale(1.2);
+            text-shadow: 0 0 10px rgba(0, 119, 181, 0.7);
+        }
+
+        .copyright {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">S. M. Mardin Rahman</div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="education">Education</a></li>
+                    <li><a href="#" class="nav-link" data-page="achievements">Achievements</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h1>S. M. Mardin Rahman</h1>
+                <p>Curious Mind Exploring Knowledge and Creativity</p>
+                <a href="#" class="btn nav-link" data-page="about">Learn More About Me</a>
+            </div>
+            
+            <h2>Hello!</h2>
+                   <p>Welcome to my personal website! I’m <strong>S. M. Mardin Rahman</strong>, a passionate learner and Science student at <strong>Notre Dame College, Dhaka</strong>. My journey is driven by curiosity, creativity, and a desire to explore the wonders of science, innovation, and art. Through this platform, I share my achievements, experiences, and projects that reflect my dedication to learning and excellence. Feel free to explore and get to know more about my work and aspirations.</p>
+           
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <h1>About Me</h1>
+            <div class="about-content">
+                <div class="profile-section">
+                    <div class="profile-picture-container">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQGXMfZFWfL26g/profile-displayphoto-scale_200_200/B4EZnySJtUKkAY-/0/1760706471406?e=1762387200&v=beta&t=IIDg2QAspDQvJqVPeXwFne4YT26bKpeuFltWR5H7vEY" 
+                             alt="S. M. Mardin Rahman" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="bio-section">
+                    <h2>S. M. Mardin Rahman</h2>
+                   <p>I am <strong>S. M. Mardin Rahman</strong>, a dedicated Science student at <strong>Notre Dame College, Dhaka</strong>, driven by a deep curiosity and passion for understanding the world. My academic foundation has strengthened my critical thinking and problem-solving abilities, allowing me to excel in diverse scientific and creative fields.</p>
+
+<p>My interests span <strong>robotics, climate science, environmental studies, astronomy, biology, literature, and creative arts</strong>. I have earned <strong>national and international recognition</strong> for excellence in competitions, quizzes, science olympiads, and creative projects, reflecting my ability to achieve high standards across multiple disciplines.</p>
+
+<p>With notable achievements in <strong>video editing, poster designing, public speaking, and academic challenges</strong>, I approach every endeavor with dedication, innovation, and a drive to make a meaningful impact. My accomplishments demonstrate a consistent record of success and a commitment to excellence.</p>
+
+<p>Passionate about <strong>bridging knowledge and creativity</strong>, I aim to continue advancing my skills, exploring new fields, and inspiring others while contributing positively to society.</p>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Page -->
+        <section id="education" class="page">
+            <h1>Education</h1>
+            
+            <div class="education-item">
+                <h3>Notre Dame College, Dhaka</h3>
+                <p><strong>Field:</strong> Science</p>
+                <p>Batch of 2026</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>Dhaka Bimanbondor Govt. High School</h3>
+                
+                <p>Batch of 2024</p>
+            </div>
+        </section>
+
+        <!-- Achievements Page -->
+        <section id="achievements" class="page">
+            <h1>Achievements</h1>
+            <div class="achievements-list">
+                <ul>
+                    <li>Nationalist at Bangladesh Robot Olympiad (BDRO)</li>
+                     <li>Nationalist at International General Science Olympiad (IGSO)-Ongoing</li>
+                   <li>Nationalist at Bangladesh Automobile Olympiad (BDRO)-Ongoing</li>
+                  <li> Finalist at Innovation World Cup Bangladesh - Ongoing</li>
+                  <li>Semi-finalist at Climate Science Olympiad</li>
+                    <li>Poet & Author – "Woman: The Flame that Lights the World" at Monomousumi Services</li>
+                    <li>Rewarded Poster Designer at Bangladesh Astro Olympiad</li>
+                    <li>Internationally Selected Haiku Poet – Golden Triangle DC</li>
+                   
+                  
+                    <li>Champion at Earth Olympiad in Bangladesh Youth Climate, Sustainability & Innovation Summit 2025</li>
+                    <li>Champion at Climate Olympiad in Bangladesh Youth Climate, Sustainability & Innovation Summit 2025</li>                         
+<li>Champion at Microbiology Olympiad in National Biology Carnival – Season 2</li>
+<li>Champion at Zoology Olympiad in National Biology Carnival – Season 2</li>
+<li>Champion at Ecology Olympiad in National Biology Carnival – Season 2</li>
+<li>2nd Runner-Up at Biology Olympiad in National Biology Carnival – Season 2</li>
+                   <li>1st Runner-Up in Video Editing Competition at INIT by Notre Dame Information Technology Club</li>
+                    <li>Best Speaker in Extempore Speech (English) at Quorum By Notre Dame International Understanding & Relation Club</li>
+                  <li>Finalist at Father Pishoto Memorial Quiz in the 14th National Speech Festival: Onirban, organized by Notre Dame Abbritti Dal</li>
+                  <li>Champion in Character Photography Competition at Notre Dame Theatre Club</li>
+                    <li>2nd Runner-Up in Mime Competition at Notre Dame Theatre Club</li>
+                    <li>2nd Runner-Up in Mimicry Competition at Notre Dame Theatre Club</li>
+                  
+                    <li>Champion at Summer Quiz Carnival (Space and Astronomy Quiz) by Youth Messenger Bangladesh</li>
+                  
+                    <li>Champion at Summer Quiz Carnival (Environment and Climate Quiz) by Youth Messenger Bangladesh</li>
+                    <li>Praiseworthy Position in International Creative Writing Contest at Monomousumi Services</li>
+                    <li>Champion of Case Study in Enviro Competition at Rotaract Club of Chittagong Veterinary & Animal Sciences University</li>
+                    <li>Champion of Poster Designing in Enviro Competition at Rotaract Club of Chittagong Veterinary & Animal Sciences University</li>
+                    <li>Champion at Nature Quiz (Higher Secondary) at Adamjee School Environment Club</li>
+                    <li>Champion at Eco-Intellect at Adamjee School Environment Club</li>
+                    <li>Champion at Nelson Mandela Quiz by UHR Dhaka chapter at Youth for Human Rights International</li>
+                    <li>Certificate of Merit - General Public Category Online Quiz Competition at Kerala State Biodiversity Board</li>
+                    <li>Champion at Astro Olympiad in LKTW National Olympiad Expo 2025 at Let's Know The World</li>
+                  
+<li>Champion at Newspaper Olympiad in the 1st National Journalism Carnival 2025 by Adamjee School News Network & Communication Club</li>
+                    <li>Finalist - Tech Olympiad by Mugen Society</li>
+                    <li>National Science Challenge – Certificate of Achievement</li>
+                    <li>2nd Runner-Up in Tobacco Day Quiz at Nutrition Club BSJA, Cox's Bazar</li>
+                    <li>Harvard ManageMentor: Certified Presentation Skills at Harvard Business Publishing</li>
+                    <li>Outstanding Entry In Creative Writing Olympiad at Monomousumi Services</li>
+                    <li>Champion at Astro Mastery Quiz in AstroMania Showdown 1.0 by Astrosphere</li>
+                    <li>1st Runner-Up at Tech Questa in AstroMania Showdown 1.0 by Astrosphere</li>
+                    <li>Champion - Science Quiz (Senior) by BAFSCK Quiz Club at BAF Shaheen College Kurmitola</li>
+                    <li>4th Position - CULTURE OLYMPIAD Bangladesh Season 1</li>
+                    <li>1st Runner Up - Literary Odyssey at 1st MGCCC National Cultural Fiesta</li>
+                    <li>1st Runner-Up in GK Quiz National Knowledge Carnival Season 4</li>
+                    
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+<section id="contact" class="page">
+    <h1>Contact</h1>
+    <div class="contact-content">
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>Feel free to reach out for collaborations, opportunities, or just to connect!</p>
+            
+            <h3>Contact Information</h3>
+            <p><strong>Email:</strong> <span class="email-text">s.m.mardin2009@gmail.com</span></p>
+            <p><strong>Location:</strong> Dhaka, Bangladesh</p>
+            
+            <h3>Professional Profiles</h3>
+            <p>LinkedIn: linkedin.com/in/mardinrahman</p>
+            <p>ResearchGate: researchgate.net/profile/Mardin_Rahman</p>
+        </div>
+        
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Replace # with your actual LinkedIn profile URL -->
+                <a href="https://www.linkedin.com/in/s-m-mardin-rahman-behid-376948343/" target="_blank" class="linkedin-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <p class="copyright">&copy; 2025 S. M. Mardin Rahman. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation between pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            // Set home page as active by default
+            showPage('home');
+            
+            // Add click event listeners to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Function to show selected page and hide others
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    if (page.id === pageId) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+                
+                // Update active state in navigation
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.style.color = '#00e5ff';
+                        link.style.textShadow = '0 0 8px rgba(0, 229, 255, 0.7)';
+                    } else {
+                        link.style.color = '#e0e0e0';
+                        link.style.textShadow = 'none';
+                    }
+                });
+            }
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // In a real application, you would send this data to a server
+                // For this example, we'll just show an alert
+                alert(`Thank you for your message, ${name}! I will get back to you soon.`);
+                
+                // Reset the form
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
